@@ -3,14 +3,21 @@ import './styles/styles.scss';
 
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import VenueList from './components/VenueList.js'
 
 class App extends Component {
   render() {
     return (
-      <main>
-      <Header />
-      <Footer />
-      </main>
+      <div className="appComponent">
+        <Header 
+          title="Party Animals"
+          message="Animals who Party!"
+        />
+        <main className="wrapper">
+          <VenueList />
+        </main>
+        <Footer />
+      </div>
     );
   }
 }

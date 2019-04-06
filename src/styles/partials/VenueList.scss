@@ -25,8 +25,8 @@
     .venueList  {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      overflow-y: scroll;
-      height: 600px;
+/*       overflow-y: scroll; */
+      min-height: 600px;
     }
   
     .venueCard {
