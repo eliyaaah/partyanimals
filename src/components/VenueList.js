@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYThjYmU1OTM0NmY0NDY5NWUyMzhjZSIsImlhdCI6MTU1NDU2NjQ4OSwiZXhwIjoxNTU3MTU4NDg5fQ.OsuEKjpkjh2sHXHA5cf4EmgPfLXsX8ArterQMuKvoXA';
+import { PARTYANIMALS_API_KEY, PARTYANIMALS_API_URL } from '../constants.js';
 
 class VenueList extends Component	{
 
@@ -20,9 +20,9 @@ class VenueList extends Component	{
 
 	async getVenueData()	{
 		try	{
-			const venueData = await axios('https://partyanimals.hackeryou.com/api/v1/venue/', {
+			const venueData = await axios(PARTYANIMALS_API_URL, {
 				headers: {
-					'Authorization': `Bearer ${apiKey}`
+					'Authorization': `Bearer ${PARTYANIMALS_API_KEY}`
 				}
 			});
 			const { data: venues } = venueData; //rename data to venues
@@ -50,7 +50,11 @@ class VenueList extends Component	{
 			} = item;
 			
 			return (
-				<div key = { id } className="venueCard">
+				<div 
+					key = { id } 
+					className="venueCard" 
+					onClick= { () => { this.props.setSelectedVenue(id) } 
+				}>
 					<img src = { image } alt = "" />
 					<p className = "venueName">{ name }</p>
 					<p className = "venueType">{ venuetype }</p>
